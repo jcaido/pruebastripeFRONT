@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ModalComponent } from './modal/modal.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ListArticleComponent } from './article/list-article.component';
+import { DetailArticleComponent } from './article/detail-article.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ListArticleComponent } from './article/list-article.component';
     MenuComponent,
     ModalComponent,
     PaymentComponent,
-    ListArticleComponent
+    ListArticleComponent,
+    DetailArticleComponent
   ],
   imports: [
     BrowserModule,
