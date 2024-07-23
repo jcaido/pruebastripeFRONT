@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ModalComponent } from './modal/modal.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ListArticleComponent } from './article/list-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ModalComponent,
-    PaymentComponent
+    PaymentComponent,
+    ListArticleComponent
   ],
   imports: [
     BrowserModule,
