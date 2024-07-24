@@ -8,6 +8,7 @@ import { ModalComponent } from './modal/modal.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ListArticleComponent } from './article/list-article.component';
 import { DetailArticleComponent } from './article/detail-article.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { DetailArticleComponent } from './article/detail-article.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
