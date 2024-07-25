@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Ignorar los archivos de configuración de Angular (si los defines aquí)
-/src/environments/*
+enviroment.ts
