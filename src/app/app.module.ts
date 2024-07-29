@@ -9,6 +9,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { ListArticleComponent } from './article/list-article.component';
 import { DetailArticleComponent } from './article/detail-article.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { NgxStripeModule } from 'ngx-stripe';
+import { enviroment } from '../enviroments/enviroment';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxStripeModule.forRoot(enviroment.publicAPIKey),
   ],
   providers: [
     provideAnimationsAsync()
