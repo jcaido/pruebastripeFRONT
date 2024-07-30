@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -11,9 +10,10 @@ import { DetailArticleComponent } from './article/detail-article.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgxStripeModule } from 'ngx-stripe';
 import { enviroment } from '../enviroments/enviroment';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
     NgxStripeModule.forRoot(enviroment.publicAPIKey),
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
