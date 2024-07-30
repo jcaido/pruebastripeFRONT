@@ -20,4 +20,8 @@ export class ArticleService {
     return this.httpClient.get<Article[]>(ARTICLE_API + "articles", httOptions);
   }
 
+  public detail_article(id: number): Observable<Article> {
+    return this.httpClient.get<Article>(ARTICLE_API + `article/${id}`, httOptions);
+  }
+
 }
