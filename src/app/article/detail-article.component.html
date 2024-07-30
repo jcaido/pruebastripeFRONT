@@ -1,1 +1,11 @@
-<p>detail-article works!</p>
+<mat-card class="example-card" appearance="outlined">
+  <img mat-card-image src="{{article?.imageURL}}" alt="article image" style="max-height: 350px; width: auto;">
+  <mat-card-content>
+    <h5>{{article?.name}}</h5>
+    <p>{{article?.description}}</p>
+    <p><b>Precio: </b>{{price}}€</p>
+  </mat-card-content>
+  <mat-card-content>
+    <app-payment></app-payment>
+  </mat-card-content>
+</mat-card>

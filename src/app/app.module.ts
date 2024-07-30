@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()
