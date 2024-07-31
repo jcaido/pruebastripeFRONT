@@ -1,11 +1,13 @@
 <mat-card class="example-card" appearance="outlined">
-  <img mat-card-image src="{{article?.imageURL}}" alt="article image" style="max-height: 350px; width: auto;">
-  <mat-card-content>
-    <h5>{{article?.name}}</h5>
+  <mat-card-content class="image">
+    <img mat-card-image class="center" src="{{article?.imageURL}}" alt="article image">
+  </mat-card-content>
+  <mat-card-content class="text">
+    <h2>{{article?.name}}</h2>
     <p>{{article?.description}}</p>
     <p><b>Precio: </b>{{price}}€</p>
   </mat-card-content>
-  <mat-card-content>
+  <mat-card-content class="payment">
     <app-payment></app-payment>
   </mat-card-content>
 </mat-card>

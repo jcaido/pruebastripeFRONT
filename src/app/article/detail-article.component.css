@@ -1,9 +1,30 @@
 .example-card {
   margin-top: 10px;
-  max-width: 400px;
+  margin-left: 50px;
+  max-width: 500px;
 }
 
 .example-header-image {
   /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;*/
+}
+
+.image {
+  width: 50%;
+  margin-top: 2px;
+  margin-left: 130px;
+}
+
+.center {
+  max-height: 300px;
+  width: auto;
+}
+
+.text {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.payment {
+  margin-top: 20px;
 }
