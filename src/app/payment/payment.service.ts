@@ -1,5 +1,7 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { STRING_TYPE } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 const STRIPE_API = 'http://localhost:8080/api/stripe/';
 
@@ -12,5 +14,13 @@ const httOptions = {
 })
 export class PaymentService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
+
+  public confirm(id: string): Observable<string> {
+    return this.httpClient.post<string>(STRIPE_API + `confirm/${id}`, {}, httOptions);
+  }
+
+  public cancel(id: string):Observable<string> {
+    return this.httpClient.post<string>(STRING_TYPE + `cancel/${id}`, {}, httOptions);
+  }
 }
