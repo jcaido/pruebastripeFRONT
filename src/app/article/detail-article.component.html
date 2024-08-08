@@ -8,6 +8,11 @@
     <p><b>Precio: </b>{{price}}€</p>
   </mat-card-content>
   <mat-card-content class="payment">
-    <app-payment></app-payment>
+    <app-payment
+      id="{{article?.id}}"
+      name="{{article?.name}}"
+      price="{{price}}"
+      description="{{article?.description}}"
+    ></app-payment>
   </mat-card-content>
 </mat-card>
