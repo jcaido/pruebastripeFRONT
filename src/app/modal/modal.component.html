@@ -1,1 +1,12 @@
-<p>modal works!</p>
+<h2 mat-dialog-title>¿Deseas confirmar el pago?</h2>
+<mat-dialog-content>
+  <h5>Datos del pago:</h5>
+  <p><b>ID: </b>{{data.id}}</p>
+  <p><b>Nombre: </b>{{data.name}}</p>
+  <p><b>Descripción: </b>{{data.description}}</p>
+  <p><b>Precio: </b>{{data.price}}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="confirm(data.id)">Confirmar</button>
+  <button mat-button (click)="cancel(data.id)" cdkFocusInitial>Cancelar</button>
+</mat-dialog-actions>
