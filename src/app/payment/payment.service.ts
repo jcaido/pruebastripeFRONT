@@ -21,6 +21,6 @@ export class PaymentService {
   }
 
   public cancel(id: string):Observable<string> {
-    return this.httpClient.post<string>(STRING_TYPE + `cancel/${id}`, {}, httOptions);
+    return this.httpClient.post<string>(STRIPE_API + `cancel/${id}`, {}, httOptions);
   }
 }
