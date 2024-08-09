@@ -14,7 +14,6 @@ import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-
 })
 export class PaymentComponent {
 
-  @Input() id: any;
   @Input() price: any;
   @Input() description: any;
   @Input() name: any;
@@ -52,9 +51,8 @@ export class PaymentComponent {
 
   openModalPayment(): void {
       const dialogRef = this.dialog.open(ModalComponent, {
-        data: {id: this.id, price: this.price, description: this.description, name: this.name}
+        data: {price: this.price, description: this.description, name: this.name}
       });
-      console.log(this.id);
   }
 
 }
