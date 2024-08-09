@@ -14,3 +14,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+mat-form-field {
+  width: 100%;
+}

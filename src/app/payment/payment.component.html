@@ -1,5 +1,13 @@
-<div>
-  <label for="card-element">Tarjeta de crédito o débito</label>
-  <div id="card-element"><!-- El elemento de la tarjeta de Stripe se montará aquí --></div>
-  <button (click)="handlePayment()">Pagar</button>
-</div>
+<form [formGroup]="checkOutForm">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <input matInput placeholder="name" formControlName="name" />
+  </mat-form-field>
+  <ngx-stripe-elements
+    [stripe]="stripe"
+    [elementsOptions]="elementsOptions"
+  >
+    <ngx-stripe-card [options]="cardOptions" />
+  </ngx-stripe-elements>
+  <button type="submit" (click)="openModalPayment()">Pagar</button>
+</form>
+
