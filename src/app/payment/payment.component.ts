@@ -1,10 +1,12 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { FormBuilder, Validators } from '@angular/forms';
-import { injectStripe } from 'ngx-stripe';
+import { injectStripe, StripeCardComponent } from 'ngx-stripe';
 import { enviroment } from '../../enviroments/enviroment';
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
+import { PaymentIntentDto } from '../model/payment-intent-dto';
+import { PaymentService } from './payment.service';
 
 
 @Component({
@@ -14,6 +16,8 @@ import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-
 })
 export class PaymentComponent {
 
+  @ViewChild(StripeCardComponent) cardElement!: StripeCardComponent;
+
   @Input() price: any;
   @Input() description: any;
   @Input() name: any;
@@ -22,7 +26,7 @@ export class PaymentComponent {
 
   readonly dialog = inject(MatDialog);
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private paymentService: PaymentService) { }
 
   cardOptions: StripeCardElementOptions = {
     style: {
@@ -49,10 +53,32 @@ export class PaymentComponent {
 
   stripe = injectStripe(enviroment.publicAPIKey);
 
-  openModalPayment(): void {
-      const dialogRef = this.dialog.open(ModalComponent, {
-        data: {price: this.price, description: this.description, name: this.name}
-      });
+  payment: any = {};
+
+  pay() {
+    const name = this.checkOutForm.get('name')?.value;
+    this.stripe
+      .createToken(this.cardElement.element)
+      .subscribe((result) => {
+        if(result.token) {
+          const paymentIntentDto: PaymentIntentDto = {
+            token: result.token.id,
+            description: this.description,
+            amount: this.price*100,
+            currency: 'EUR'
+          }
+          this.paymentService.pay(paymentIntentDto).subscribe(
+            data => {
+              this.payment = data;
+              this.dialog.open(ModalComponent, {
+                data: {id:this.payment.id, price: this.price, description: this.description, name: this.name }
+              })
+            }
+          );
+        } else if(result.error) {
+            console.log(result.error.message);
+        }
+      })
   }
 
 }
