@@ -2,6 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { PaymentService } from '../payment/payment.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -10,15 +11,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ModalComponent {
 
-  //@Input() id: any;
-  //@Input() name: any;
-  //@Input() description: any;
-  //@Input() price: any;
-
   readonly dialogRef = inject(MatDialogRef<ModalComponent>);
   readonly data = inject(MAT_DIALOG_DATA);
 
-  constructor(private paymentService: PaymentService, private _snackBar: MatSnackBar) {}
+  constructor(private paymentService: PaymentService, private _snackBar: MatSnackBar, private route: Router) {}
 
   confirm(id: string): void {
     this.paymentService.confirm(id).subscribe(
@@ -27,6 +23,7 @@ export class ModalComponent {
         this._snackBar.open("Pago confirmado", "Cerrar", {
           duration: 5000
         });
+        this.route.navigate(['/']);
       },
       err => {
         this.dialogRef.close();
