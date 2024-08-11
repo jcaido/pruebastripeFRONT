@@ -1,6 +1,9 @@
 <form [formGroup]="checkOutForm">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <input matInput placeholder="name" formControlName="name" />
+  <mat-form-field appearance="outline">
+    <input matInput type="text" placeholder="nombre" formControlName="name" required />
+    @if (checkOutForm.get('name')?.errors?.['required']) {
+      <mat-error>Debe introducir un nombre</mat-error>
+    }
   </mat-form-field>
   <ngx-stripe-elements
     [stripe]="stripe"
@@ -8,6 +11,6 @@
   >
     <ngx-stripe-card [options]="cardOptions" />
   </ngx-stripe-elements>
-  <button type="submit" (click)="pay()">Pagar</button>
+  <mat-error>{{errorMessage}}</mat-error>
+  <button mat-raised-button color="primary" (click)="pay()">Pagar</button>
 </form>
-

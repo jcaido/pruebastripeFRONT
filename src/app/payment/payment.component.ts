@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, Input, ViewChild, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -55,6 +55,8 @@ export class PaymentComponent {
 
   payment: any = {};
 
+  errorMessage: string = '';
+
   pay() {
     const name = this.checkOutForm.get('name')?.value;
     this.stripe
@@ -77,6 +79,7 @@ export class PaymentComponent {
           );
         } else if(result.error) {
             console.log(result.error.message);
+            this.errorMessage = result.error.message!;
         }
       })
   }
