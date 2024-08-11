@@ -7,6 +7,6 @@
   <p><b>Precio: </b>{{data.price}}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="confirm(data.id)">Confirmar</button>
-  <button mat-button (click)="cancel(data.id)" cdkFocusInitial>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="confirm(data.id)">Confirmar</button>
+  <button mat-raised-button color="primary" (click)="cancel(data.id)" cdkFocusInitial>Cancelar</button>
 </mat-dialog-actions>
