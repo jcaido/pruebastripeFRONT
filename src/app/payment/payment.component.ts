@@ -58,6 +58,7 @@ export class PaymentComponent {
   errorMessage: string = '';
 
   pay() {
+    this.errorMessage = '';
     const name = this.checkOutForm.get('name')?.value;
     this.stripe
       .createToken(this.cardElement.element)
@@ -78,7 +79,6 @@ export class PaymentComponent {
             }
           );
         } else if(result.error) {
-            console.log(result.error.message);
             this.errorMessage = result.error.message!;
         }
       })
