@@ -24,7 +24,11 @@ export class PaymentService {
     return this.httpClient.post<string>(STRIPE_API + `confirm/${id}`, {}, httOptions);
   }
 
-  public cancel(id: string):Observable<string> {
+  public cancel(id: string): Observable<string> {
     return this.httpClient.post<string>(STRIPE_API + `cancel/${id}`, {}, httOptions);
+  }
+
+  public getReceiptPdf(id: String): Observable<Blob> {
+    return this.httpClient.get(STRIPE_API + `receipt/${id}`, {responseType: 'blob'})
   }
 }
