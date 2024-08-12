@@ -59,7 +59,7 @@ export class PaymentComponent {
 
   pay() {
     this.errorMessage = '';
-    const name = this.checkOutForm.get('name')?.value;
+    const userName = this.checkOutForm.get('name')?.value;
     this.stripe
       .createToken(this.cardElement.element)
       .subscribe((result) => {
@@ -74,7 +74,7 @@ export class PaymentComponent {
             data => {
               this.payment = data;
               this.dialog.open(ModalComponent, {
-                data: {id:this.payment.id, price: this.price, description: this.description, name: this.name }
+                data: {id:this.payment.id, price: this.price, description: this.description, name: this.name, userName: userName }
               })
             }
           );
