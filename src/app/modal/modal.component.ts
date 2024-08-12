@@ -16,13 +16,25 @@ export class ModalComponent {
 
   constructor(private paymentService: PaymentService, private _snackBar: MatSnackBar, private route: Router) {}
 
-  confirm(id: string): void {
+  confirm(id: string, userName: string, titleProduct: string): void {
     this.paymentService.confirm(id).subscribe(
       data => {
         this.dialogRef.close();
         this._snackBar.open("Pago confirmado", "Cerrar", {
           duration: 5000
         });
+        this.paymentService.getReceiptPdf(id, userName, titleProduct).subscribe(
+          (data: Blob) => {
+            const downloadURL = window.URL.createObjectURL(data);
+            const link = document.createElement('a');
+            link.href = downloadURL;
+            link.download = 'receipt.pdf';
+            link.click();
+          },
+          error => {
+            console.error('Error downloading the receipt', error);
+          }
+        )
         this.route.navigate(['/']);
       },
       err => {
