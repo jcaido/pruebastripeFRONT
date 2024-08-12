@@ -28,7 +28,7 @@ export class PaymentService {
     return this.httpClient.post<string>(STRIPE_API + `cancel/${id}`, {}, httOptions);
   }
 
-  public getReceiptPdf(id: String): Observable<Blob> {
-    return this.httpClient.get(STRIPE_API + `receipt/${id}`, {responseType: 'blob'})
+  public getReceiptPdf(id: String, userName: string, titleProduct: string): Observable<Blob> {
+    return this.httpClient.get(STRIPE_API + `receipt/${id}` + `/${userName}` + `/${titleProduct}`, {responseType: 'blob'})
   }
 }
