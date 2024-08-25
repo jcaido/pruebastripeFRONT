@@ -55,7 +55,6 @@ export class ModalComponent {
         });
       },
       err => {
-        console.log(err);
         this.dialogRef.close();
         this._snackBar.open("Error al cancelar: " + err, "Cerrar", {
           duration: 5000
